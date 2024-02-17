@@ -139,4 +139,5 @@ CMakeFiles/rpg.dir/main.cpp.obj: \
  C:\Users\agome\Desktop\2P-RPG\2P-RPG\Player/Player.h \
  C:/Users/agome/Desktop/2P-RPG/2P-RPG/Character/Character.h \
  C:\Users\agome\Desktop\2P-RPG\2P-RPG\Enemy/Enemy.h \
- C:/Users/agome/Desktop/2P-RPG/2P-RPG/Character/Character.h
+ C:/Users/agome/Desktop/2P-RPG/2P-RPG/Character/Character.h \
+ C:\Users\agome\Desktop\2P-RPG\2P-RPG\Utils.h

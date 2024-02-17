@@ -14,13 +14,13 @@ Enemy::Enemy(string _name, int _health, int _attack, int _defense, int _speed, i
 }
 
 void Enemy::doAttack(Character *target) {
-    target->takeDamage(getRolledAttack(attack));
+    int damage = getRolledAttack(attack);
+    target->takeDamage(damage);
 }
 
 void Enemy::takeDamage(int damage) {
-    int trueDamage = damage - defense;
-
-    health-= trueDamage;
+    int trueDamage = max(damage - defense, 0);
+    health -= trueDamage;
 }
 
 int Enemy::getExperience() {

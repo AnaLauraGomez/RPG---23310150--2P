@@ -1,11 +1,12 @@
 //
 // Created by Victor Navarro on 15/02/24.
 //
-#include<cstdlib>
+#include <iostream>
+#include <cstdlib>
+#include "Player/Player.h"
+#include "Enemy/Enemy.h"
 
 namespace combat_utils {
-    int getRolledAttack(int attack) {
-        int lowerLimit = attack * .80;
-        return (rand() % (attack - lowerLimit + 1)) + lowerLimit;
-    }
+    int getRolledAttack(int attack);
+    void simulateCombat(Player *player, Enemy *enemy);
 }

@@ -98,6 +98,9 @@
 		<Unit filename="C:/Users/agome/Desktop/2P-RPG/2P-RPG/Player/Player.h">
 			<Option target="rpg"/>
 		</Unit>
+		<Unit filename="C:/Users/agome/Desktop/2P-RPG/2P-RPG/Utils.cpp">
+			<Option target="rpg"/>
+		</Unit>
 		<Unit filename="C:/Users/agome/Desktop/2P-RPG/2P-RPG/Utils.h">
 			<Option target="rpg"/>
 		</Unit>

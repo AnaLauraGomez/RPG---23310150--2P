@@ -10,4 +10,5 @@ add_executable(rpg main.cpp
         Player/Player.h
         Enemy/Enemy.cpp
         Enemy/Enemy.h
-        Utils.h)
+        Utils.h
+        Utils.cpp)
