@@ -1,28 +1,24 @@
 #include <iostream>
 #include "Player/Player.h"
 #include "Enemy/Enemy.h"
-#include "Utils.h"
+#include "Combat/Combat.h"
 
 int main() {
-    Player *player = new Player("Victor", 10, 5, 5, 10);
-    Enemy *enemy = new Enemy("Estudiante de Redes", 10, 8, 8, 5, 10);
+    Player *player = new Player("Victor", 40, 10, 4, 3);
+    Enemy *enemy = new Enemy("Goblin", 15, 6, 2, 5, 10);
+    Enemy *enemy2 = new Enemy("Orc", 15, 6, 2, 5, 10);
 
-   /* cout << player->toString() << endl;
-    cout << enemy->toString() << endl;
+    vector<Character*> participants;
 
-    cout << "=====================" << endl;
+    participants.push_back(player);
+    participants.push_back(enemy);
+    participants.push_back(enemy2);
 
-    player->doAttack(enemy);
-    enemy->doAttack(player);
+    Combat *combat = new Combat(participants);
+    combat->doCombat();
 
-
-    cout << player->toString() << endl;
-    cout << enemy->toString() << endl;*/
-
-    // Llamar a la función simulateCombat para manejar el combate
-    combat_utils::simulateCombat(player, enemy);
-
-    //delete player;
-    //delete enemy;
+    delete player;
+    delete enemy;
+    delete combat;
     return 0;
 }

@@ -3,25 +3,26 @@
 //
 
 #include "Player.h"
-#include "../Utils.h"
+#include <iostream>
 
-Player::Player(string _name, int _health, int _attack, int _defense, int _speed) : Character(_name, _health, _attack, _defense, _speed) {
+using namespace std;
+
+Player::Player(string _name, int _health, int _attack, int _defense, int _speed) : Character(_name, _health, _attack, _defense, _speed, true) {
     level = 1;
     experience = 0;
 }
 
 void Player::doAttack(Character *target) {
-    int damage = combat_utils::getRolledAttack(attack);
-    // Ajustar el daño teniendo en cuenta la defensa del objetivo
-    damage -= target->getDefense();
-    // Asegurarnos de que el daño no sea negativo
-    damage = max(damage, 0);
-    target->takeDamage(damage);
+    target->takeDamage(attack);
 }
 
 void Player::takeDamage(int damage) {
-    int trueDamage = max(damage - defense, 0);
-    health -= trueDamage;
+    int trueDamage = damage - defense;
+
+    health-= trueDamage;
+
+    cout << name << " took " << trueDamage << " damage!" << endl;
+
 }
 
 void Player::levelUp() {
@@ -34,4 +35,16 @@ void Player::gainExperience(int exp) {
         levelUp();
         experience = 100-experience;
     }
+}
+
+Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
+    int selectedTarget = 0;
+    cout << "Select a target: " << endl;
+    for (int i = 0; i < possibleTargets.size(); i++) {
+        cout << i << ". " << possibleTargets[i]->getName() << endl;
+    }
+
+    //TODO: Add input validation
+    cin >> selectedTarget;
+    return possibleTargets[selectedTarget];
 }
