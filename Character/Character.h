@@ -12,19 +12,22 @@ class Character {
 protected:
     string name;
     int health;
+    int maxHealth; // Nuevo miembro para la salud máxima
     int attack;
     int defense;
     int speed;
     bool isPlayer;
 public:
-    Character(string _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer);
+    Character(string _name, int _health, int _maxHealth, int _attack, int _defense, int _speed, bool _isPlayer); // Declaración del constructor
 
     virtual void doAttack(Character *target) = 0;
     virtual void takeDamage(int damage) = 0;
 
     //TODO: Implementar metodo de defensa
     //Incrementar la defensa un 20% solo por el turno actual
-    void defend();
+    void defend() {
+        defense *= 1.2; // Aumentar la defensa en un 20%
+    }
 
     bool flee(Character* target);
     string getName();
@@ -34,6 +37,9 @@ public:
     bool getIsPlayer();
     int getSpeed();
     string toString();
+
+    int getHealth() const { return health; }
+    int getMaxHealth() const { return maxHealth; }
 };
 
 

@@ -16,6 +16,7 @@ class Player: public Character {
 private:
     int level;
     int experience;
+    int originalDefense;
 
     void levelUp();
 public:
@@ -23,6 +24,8 @@ public:
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
     Character* selectTarget(vector<Enemy*> possibleTargets);
+
+    void resetDefense();
 
     void gainExperience(int exp);
     //TODO: Implement use object

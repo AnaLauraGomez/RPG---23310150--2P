@@ -7,9 +7,10 @@
 
 using namespace std;
 
-Player::Player(string _name, int _health, int _attack, int _defense, int _speed) : Character(_name, _health, _attack, _defense, _speed, true) {
+Player::Player(string _name, int _health, int _attack, int _defense, int _speed) : Character(_name, _health, _health,_attack, _defense, _speed, true) {
     level = 1;
     experience = 0;
+    originalDefense = _defense; // Almacena el valor original de la defensa
 }
 
 void Player::doAttack(Character *target) {
@@ -47,4 +48,9 @@ Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
     //TODO: Add input validation
     cin >> selectedTarget;
     return possibleTargets[selectedTarget];
+}
+
+void Player::resetDefense() {
+    // Restablecer la defensa al valor original
+    defense = originalDefense;
 }

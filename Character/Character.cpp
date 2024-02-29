@@ -3,9 +3,10 @@
 //
 
 #include "Character.h"
-Character::Character(string _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer) {
+Character::Character(string _name, int _health, int _maxHealth, int _attack, int _defense, int _speed, bool _isPlayer) {
     name = _name;
     health = _health;
+    maxHealth = _maxHealth; // Inicializa maxHealth con el valor proporcionado
     attack = _attack;
     defense = _defense;
     speed = _speed;
