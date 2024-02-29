@@ -1,7 +1,3 @@
-//
-// Created by Victor Navarro on 19/02/24.
-//
-
 #include "Combat.h"
 #include <string>
 #include <iostream>
@@ -72,8 +68,30 @@ Character* Combat::getTarget(Character* attacker) {
     return nullptr;
 }
 
+void Combat::chooseEnemy() {
+    cout << "Elige con qué enemigo deseas pelear:" << endl;
+    for (int i = 0; i < enemies.size(); ++i) {
+        cout << i+1 << ". " << enemies[i]->getName() << endl;
+    }
+    int choice;
+    cin >> choice;
+    if (choice > 0 && choice <= enemies.size()) {
+        // Actualizar la lista de participantes solo con el jugador y el enemigo seleccionado
+        participants.clear();
+        participants.push_back(partyMembers[0]);
+        selectedEnemy = enemies[choice-1]; // Almacenar el enemigo seleccionado
+        participants.push_back(selectedEnemy);
+    } else {
+        cout << "Opción inválida. Se iniciará el combate con todos los participantes." << endl;
+    }
+}
+
 void Combat::doCombat() {
     cout << "Inicio del combate" << endl;
+
+    // El jugador elige con qué enemigo desea pelear
+    chooseEnemy();
+
     combatPrep();
     while (participants.size() > 1) {
         for (auto participant : participants) {
@@ -94,7 +112,8 @@ void Combat::doCombat() {
                     dynamic_cast<Player*>(participant)->resetDefense(); // Si participant es un jugador, se llama a resetDefense
                     continue; // Omite la fase de ataque si la jugadora elige defenderse.
                 }
-                target = ((Player *)participant)->selectTarget(enemies);
+                // El jugador ataca solo al enemigo seleccionado al principio del combate
+                target = selectedEnemy;
             } else {
                 // Calcular el 15% de la salud máxima del participante
                 double fifteenPercentMaxHealth = 0.15 * participant->getMaxHealth();
