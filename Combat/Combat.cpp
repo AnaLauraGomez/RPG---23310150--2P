@@ -3,6 +3,7 @@
 #include <iostream>
 #include <utility>
 #include <algorithm>
+#include <cstdlib>
 
 using namespace std;
 
@@ -77,82 +78,111 @@ void Combat::chooseEnemy() {
     cin >> choice;
     if (choice > 0 && choice <= enemies.size()) {
         // Actualizar la lista de participantes solo con el jugador y el enemigo seleccionado
-        participants.clear();
-        participants.push_back(partyMembers[0]);
-        selectedEnemy = enemies[choice-1]; // Almacenar el enemigo seleccionado
-        participants.push_back(selectedEnemy);
+        participants.clear();  // Limpiar la lista de participantes
+        participants.push_back(partyMembers[0]);  // Agregar al jugador
+        selectedEnemy = enemies[choice-1];  // Almacenar el enemigo seleccionado
+        participants.push_back(selectedEnemy);  // Agregar al enemigo seleccionado
     } else {
         cout << "Opción inválida. Se iniciará el combate con todos los participantes." << endl;
+        // No se ha seleccionado ningún enemigo, por lo que se peleará con todos los enemigos
+        selectedEnemy = nullptr;
     }
 }
 
 void Combat::doCombat() {
     cout << "Inicio del combate" << endl;
-
-    // El jugador elige con qué enemigo desea pelear
     chooseEnemy();
 
-    combatPrep();
-    while (participants.size() > 1) {
-        for (auto participant : participants) {
-            cout << "------ Turno de " << participant->getName() << " ------" << endl;
-            cout << participant->getName() << " (Salud: " << participant->getHealth() << ", Defensa: " << participant->getDefense() << ", Velocidad: " << participant->getSpeed() << ")" << endl;
+    // Mostrar los parámetros de vida, defensa y ataque de todos los participantes al inicio del combate
+    cout << "=== Participant Status: ===" << endl;
+    for (auto participant : participants) {
+        cout << participant->toString() << endl;
+    }
+    cout << "" << endl;
 
-            Character *target = nullptr;
-            if (participant->getIsPlayer()) {
-                cout << "Es tu turno, " << participant->getName() << endl;
-                cout << "Selecciona una opción:\n1. Atacar\n2. Defender" << endl;
-                int choice;
-                cin >> choice;
-                if (choice == 2) {
-                    participant->defend();
-                    cout << participant->getName() << " se ha defendido. Su defensa ha aumentado en un 20% por este turno." << endl;
-                    cout << "Teniendo de nueva defensa por este turno: " << participant->getDefense() << endl;
-                    // Restablecer la defensa del jugador al valor original al finalizar su turno
-                    dynamic_cast<Player*>(participant)->resetDefense(); // Si participant es un jugador, se llama a resetDefense
-                    continue; // Omite la fase de ataque si la jugadora elige defenderse.
-                }
-                // El jugador ataca solo al enemigo seleccionado al principio del combate
-                target = selectedEnemy;
-            } else {
-                // Calcular el 15% de la salud máxima del participante
-                double fifteenPercentMaxHealth = 0.15 * participant->getMaxHealth();
-                // Verificar si la salud actual del participante es menor que el 15% de su salud máxima
-                if (participant->getHealth() < fifteenPercentMaxHealth) {
-                    int chance = rand();
-                    //calcular el 40% de rand_max
-                    int limite = static_cast<int>(RAND_MAX * 0.4);
-                    cout << "Probabilidad generada: " << chance << endl; // Imprimir la probabilidad generada aleatoriamente
-                    //verificar si el numero cae en el 40% del rango
-                    if (chance <= limite) {
-                        participant->defend();
-                        cout << participant->getName() << " decide defenderse al tener menos del 15% de vida." << endl;
-                        continue; // Omite la fase de ataque si la jugadora elige defenderse.
-                    }
-                }
-                target = ((Enemy *)participant)->selectTarget(partyMembers);
-            }
-            cout << participant->getName() << " ataca a " << target->getName() << "!" << endl;
-            participant->doAttack(target);
-            if (target->getHealth() <= 0) {
-                // Remove the defeated target from the combat
-                participants.erase(remove(participants.begin(), participants.end(), target), participants.end());
-                // Remove the target from their respective group (player or enemy)
-                if (target->getIsPlayer()) {
-                    partyMembers.erase(remove(partyMembers.begin(), partyMembers.end(), target), partyMembers.end());
-                    if (partyMembers.empty()) {
-                        cout << "Game Over" << endl;
-                        return;
-                    }
-                } else {
-                    cout << "You killed enemy " << target->getName() << endl;
-                    enemies.erase(remove(enemies.begin(), enemies.end(), target), enemies.end());
-                    if (enemies.empty()) {
-                        cout << "Victory" << endl;
-                        return;
-                    }
-                }
-            }
+    combatPrep();
+    int round = 1;
+    //Este while representa las rondas del combate
+    while(enemies.size() > 0 && partyMembers.size() > 0) {
+        cout<<"Round " << round << endl;
+        vector<Character*>::iterator it = participants.begin();
+        registerActions(it);
+        executeActions(it);
+
+        // Mostrar los parámetros de vida, defensa y ataque de todos los participantes al final de cada ronda
+        cout << "=== Participant Status: ===" << endl;
+        for (auto participant : participants) {
+            cout << participant->toString() << endl;
         }
+        cout << "" << endl;
+
+        round++;
+
+        // Si se ha derrotado al enemigo seleccionado, salir del bucle de combate
+        if (selectedEnemy && selectedEnemy->getHealth() <= 0) {
+            break;
+        }
+    }
+
+    if (selectedEnemy && selectedEnemy->getHealth() <= 0) {
+        cout << "You win!" << endl;
+    } else {
+        cout << "You lose!" << endl;
+    }
+}
+
+void Combat::executeActions(vector<Character*>::iterator participant) {
+    while(!actionQueue.empty()) {
+        Action currentAction = actionQueue.top();
+        currentAction.action();
+        actionQueue.pop();
+
+        //Check if there are any dead characters
+        checkParticipantStatus(*participant);
+        checkParticipantStatus(currentAction.target);
+    }
+}
+
+void Combat::checkParticipantStatus(Character *participant) {
+    if(participant->getHealth() <= 0) {
+        if(participant->getIsPlayer()) {
+            partyMembers.erase(remove(partyMembers.begin(), partyMembers.end(), participant), partyMembers.end());
+        } else {
+            enemies.erase(remove(enemies.begin(), enemies.end(), participant), enemies.end());
+        }
+        participants.erase(remove(participants.begin(), participants.end(), participant), participants.end());
+    }
+}
+
+void Combat::registerActions(vector<Character*>::iterator participantIterator) {
+    //Este while representa el turno de cada participante
+    //La eleccion que cada personaje elije en su turno
+    while(participantIterator != participants.end()) {
+        if((*participantIterator)->getIsPlayer()) {
+            Action playerAction = ((Player*) *participantIterator)->takeAction(enemies);
+            actionQueue.push(playerAction);
+        } else {
+            // Lógica para que el enemigo pueda defenderse con probabilidad del 40% si tiene menos del 15% de vida
+            Enemy *enemyParticipant = dynamic_cast<Enemy*>(*participantIterator);
+            double fifteenPercentMaxHealth = 0.15 * enemyParticipant->getMaxHealth();
+            if (enemyParticipant->getHealth() < fifteenPercentMaxHealth) {
+                // Calcular la probabilidad de defensa
+                double defenseProbability = static_cast<double>(rand()) / RAND_MAX;
+                // Calcular el límite
+                int limite = static_cast<int>(defenseProbability * RAND_MAX);
+                cout << "Tu probabilidad de defenderte fue: " << defenseProbability << endl;
+                if (defenseProbability <= 0.4) {
+                    enemyParticipant->defend();
+                    cout << enemyParticipant->getName() << " decide defenderse al tener menos del 15% de vida." << endl;
+                    participantIterator++;
+                    continue; // Saltar al siguiente participante sin registrar acción de ataque
+                }
+            }
+
+            Action enemyAction = enemyParticipant->takeAction(partyMembers);
+            actionQueue.push(enemyAction);
+        }
+
+        participantIterator++;
     }
 }

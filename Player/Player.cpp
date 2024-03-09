@@ -19,10 +19,17 @@ void Player::doAttack(Character *target) {
 
 void Player::takeDamage(int damage) {
     int trueDamage = damage - defense;
+    if (trueDamage < 0) {
+        trueDamage = 0; // El jugador no puede curarse debido a la defensa
+    }
 
-    health-= trueDamage;
+    health -= trueDamage;
 
-    cout << name << " took " << trueDamage << " damage!" << endl;
+    cout << name << " recibio " << trueDamage << " damage!" << endl;
+
+    if(health <= 0) {
+        cout << name << " has been defeated!" << endl;
+    }
 
 }
 
@@ -54,3 +61,59 @@ void Player::resetDefense() {
     // Restablecer la defensa al valor original
     defense = originalDefense;
 }
+
+Action Player::takeAction(vector<Enemy*> enemies) {
+    int action;
+    cout << "Select an action: " << endl
+         << "1. Attack" << endl
+         << "2. Defend" << endl; // Agregar la opción de defenderse
+    cin >> action;
+    Action currentAction;
+    Character* target = nullptr;
+    int originalDefense = defense; // Mover la declaración aquí
+    switch(action) {
+        case 1:
+            // Utilizar al enemigo seleccionado al principio del combate como objetivo
+            if (!enemies.empty()) {
+                target = enemies[0];
+            } else {
+                cout << "No hay enemigos disponibles." << endl;
+                currentAction.action = nullptr;
+                return currentAction;
+            }
+            currentAction.target = target;
+            currentAction.action = [this, target](){
+                doAttack(target);
+            };
+            currentAction.speed = getSpeed();
+            break;
+        case 2:
+            defend(); // Llamar al método defend si se elige defenderse
+            // Incrementar la defensa un 20% solo para el turno actual
+            defense = static_cast<int>(defense * 1.2);
+
+            if (!enemies.empty()) {
+                target = enemies[0];
+            }
+            if (target) {
+                currentAction.target = target;
+                currentAction.action = [this, target, originalDefense](){
+                    target->doAttack(this);
+                    // Restablecer la defensa al valor original después de defenderse
+                    defense = originalDefense;
+                };
+                currentAction.speed = target->getSpeed();
+            } else {
+                cout << "No hay enemigos disponibles." << endl;
+                currentAction.action = nullptr;
+            }
+            break;
+        default:
+            cout << "Invalid action" << endl;
+            currentAction.action = nullptr;
+            break;
+    }
+
+    return currentAction;
+}
+

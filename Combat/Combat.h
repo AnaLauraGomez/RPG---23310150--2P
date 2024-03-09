@@ -4,6 +4,7 @@
 #include "../Character/Character.h"
 #include "../Player/Player.h"
 #include "../Enemy/Enemy.h"
+#include <queue>
 
 class Combat {
 private:
@@ -11,6 +12,11 @@ private:
     vector<Player*> partyMembers;
     vector<Enemy*> enemies;
     Enemy* selectedEnemy; // Variable para almacenar el enemigo seleccionado
+
+    priority_queue<Action> actionQueue;
+    void registerActions(vector<Character*>::iterator participant);
+    void executeActions(vector<Character*>::iterator participant);
+    void checkParticipantStatus(Character* participant);
 
     void combatPrep();
     Character* getTarget(Character* attacker);

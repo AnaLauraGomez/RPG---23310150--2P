@@ -5,6 +5,7 @@
 #ifndef RPG_CHARACTER_H
 #define RPG_CHARACTER_H
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ public:
     //TODO: Implementar metodo de defensa
     //Incrementar la defensa un 20% solo por el turno actual
     void defend() {
-        defense *= 1.2; // Aumentar la defensa en un 20%
+        defense = std::ceil(defense*1.2);
     }
 
     bool flee(Character* target);
