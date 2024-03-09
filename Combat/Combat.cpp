@@ -77,6 +77,8 @@ void Combat::chooseEnemy() {
     int choice;
     cin >> choice;
     if (choice > 0 && choice <= enemies.size()) {
+        // Establecer el enemigo seleccionado para el jugador
+        partyMembers[0]->setSelectedEnemy(enemies[choice-1]);
         // Actualizar la lista de participantes solo con el jugador y el enemigo seleccionado
         participants.clear();  // Limpiar la lista de participantes
         participants.push_back(partyMembers[0]);  // Agregar al jugador
@@ -160,6 +162,10 @@ void Combat::registerActions(vector<Character*>::iterator participantIterator) {
     while(participantIterator != participants.end()) {
         if((*participantIterator)->getIsPlayer()) {
             Action playerAction = ((Player*) *participantIterator)->takeAction(enemies);
+            // Si el jugador eligió atacar, establecer al enemigo seleccionado como objetivo
+            if (playerAction.action != nullptr && selectedEnemy != nullptr) {
+                playerAction.target = selectedEnemy;
+            }
             actionQueue.push(playerAction);
         } else {
             // Lógica para que el enemigo pueda defenderse con probabilidad del 40% si tiene menos del 15% de vida

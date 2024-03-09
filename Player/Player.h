@@ -18,6 +18,7 @@ private:
     int level;
     int experience;
     int originalDefense;
+    Enemy* selectedEnemy;
 
     void levelUp();
 public:
@@ -31,6 +32,10 @@ public:
 
     void gainExperience(int exp);
     //TODO: Implement use object
+
+    void setSelectedEnemy(Enemy* enemy) {
+        selectedEnemy = enemy;
+    }
 };
 
 

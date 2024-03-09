@@ -49,11 +49,15 @@ Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
     int selectedTarget = 0;
     cout << "Select a target: " << endl;
     for (int i = 0; i < possibleTargets.size(); i++) {
-        cout << i << ". " << possibleTargets[i]->getName() << endl;
+        cout << i + 1 << ". " << possibleTargets[i]->getName() << endl;  // Sumar 1 para mostrar el número de enemigo correctamente
     }
 
-    //TODO: Add input validation
+    // TODO: Add input validation
     cin >> selectedTarget;
+
+    // Ajustar el índice seleccionado para que coincida con el índice del vector
+    selectedTarget--;
+
     return possibleTargets[selectedTarget];
 }
 
@@ -75,7 +79,7 @@ Action Player::takeAction(vector<Enemy*> enemies) {
         case 1:
             // Utilizar al enemigo seleccionado al principio del combate como objetivo
             if (!enemies.empty()) {
-                target = enemies[0];
+                target = selectedEnemy;
             } else {
                 cout << "No hay enemigos disponibles." << endl;
                 currentAction.action = nullptr;
