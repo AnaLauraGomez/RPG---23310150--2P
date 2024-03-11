@@ -93,8 +93,6 @@ Action Player::takeAction(vector<Enemy*> enemies) {
             break;
         case 2:
             defend(); // Llamar al método defend si se elige defenderse
-            // Incrementar la defensa un 20% solo para el turno actual
-            defense = static_cast<int>(defense * 1.2);
 
             if (!enemies.empty()) {
                 target = enemies[0];
@@ -102,7 +100,6 @@ Action Player::takeAction(vector<Enemy*> enemies) {
             if (target) {
                 currentAction.target = target;
                 currentAction.action = [this, target, originalDefense](){
-                    target->doAttack(this);
                     // Restablecer la defensa al valor original después de defenderse
                     defense = originalDefense;
                 };
