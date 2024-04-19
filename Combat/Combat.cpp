@@ -4,6 +4,7 @@
 #include <utility>
 #include <algorithm>
 #include <cstdlib>
+#include <cstring>
 
 using namespace std;
 
@@ -48,14 +49,25 @@ void Combat::combatPrep() {
     sort(participants.begin(), participants.end(), compareSpeed);
 }
 
-string Combat::toString() {
-    string result = "";
-    vector<Character*>::iterator it;
-    for(it = participants.begin(); it != participants.end(); it++){
-        result += (*it)->toString() + "\n";
+char* Combat::toString() {
+    // Crear un buffer para almacenar la representación en cadena de los participantes
+    char buffer[1024]; // Selecciona un tamaño adecuado para el buffer
+
+    // Inicializar el buffer
+    buffer[0] = '\0';
+
+    // Iterar sobre los participantes y concatenar sus representaciones en cadena al buffer
+    for (auto it = participants.begin(); it != participants.end(); ++it) {
+        // Concatenar la representación en cadena del participante actual al buffer
+        strcat(buffer, (*it)->toString());
+        strcat(buffer, "\n");
     }
-    cout<<"===================="<<endl;
-    return result;
+
+    // Agregar un separador al final del buffer
+    strcat(buffer, "====================\n");
+
+    // Devolver el buffer como un arreglo de caracteres
+    return buffer;
 }
 
 Character* Combat::getTarget(Character* attacker) {

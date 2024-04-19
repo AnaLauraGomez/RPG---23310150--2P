@@ -60,34 +60,11 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.2.0/bits/uses_allocator_args.h \
  C:/msys64/mingw64/include/c++/13.2.0/tuple \
  C:/Users/agome/Desktop/2P-RPG/2P-RPG/Character/Character.h \
- C:/msys64/mingw64/include/c++/13.2.0/string \
- C:/msys64/mingw64/include/c++/13.2.0/bits/stringfwd.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/char_traits.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/postypes.h \
- C:/msys64/mingw64/include/c++/13.2.0/cwchar \
- C:/msys64/mingw64/include/wchar.h \
- C:/msys64/mingw64/include/corecrt_stdio_config.h \
- C:/msys64/mingw64/include/corecrt_wstdlib.h \
- C:/msys64/mingw64/include/_mingw_off_t.h \
- C:/msys64/mingw64/include/_mingw_stat64.h \
- C:/msys64/mingw64/include/swprintf.inl \
- C:/msys64/mingw64/include/sec_api/wchar_s.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/localefwd.h \
- C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
- C:/msys64/mingw64/include/c++/13.2.0/clocale \
- C:/msys64/mingw64/include/locale.h C:/msys64/mingw64/include/stdio.h \
- C:/msys64/mingw64/include/sec_api/stdio_s.h \
- C:/msys64/mingw64/include/c++/13.2.0/iosfwd \
- C:/msys64/mingw64/include/c++/13.2.0/cctype \
- C:/msys64/mingw64/include/ctype.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/ostream_insert.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/cxxabi_forced.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/basic_string.h \
- C:/msys64/mingw64/include/c++/13.2.0/string_view \
- C:/msys64/mingw64/include/c++/13.2.0/bits/string_view.tcc \
- C:/msys64/mingw64/include/c++/13.2.0/ext/string_conversions.h \
- C:/msys64/mingw64/include/c++/13.2.0/cstdlib \
+ C:/msys64/mingw64/include/c++/13.2.0/cmath \
+ C:/msys64/mingw64/include/math.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/std_abs.h \
  C:/msys64/mingw64/include/stdlib.h \
+ C:/msys64/mingw64/include/corecrt_wstdlib.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/limits.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
  C:/msys64/mingw64/include/limits.h \
@@ -96,13 +73,6 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: \
  C:/msys64/mingw64/include/malloc.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mm_malloc.h \
  C:/msys64/mingw64/include/errno.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/std_abs.h \
- C:/msys64/mingw64/include/c++/13.2.0/cstdio \
- C:/msys64/mingw64/include/c++/13.2.0/cerrno \
- C:/msys64/mingw64/include/c++/13.2.0/bits/charconv.h \
- C:/msys64/mingw64/include/c++/13.2.0/bits/basic_string.tcc \
- C:/msys64/mingw64/include/c++/13.2.0/cmath \
- C:/msys64/mingw64/include/math.h \
  C:/msys64/mingw64/include/c++/13.2.0/bits/specfun.h \
  C:/msys64/mingw64/include/c++/13.2.0/limits \
  C:/msys64/mingw64/include/c++/13.2.0/tr1/gamma.tcc \
@@ -140,6 +110,7 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.2.0/bits/stl_heap.h \
  C:/msys64/mingw64/include/c++/13.2.0/bits/uniform_int_dist.h \
  C:/msys64/mingw64/include/c++/13.2.0/bits/stl_tempbuf.h \
+ C:/msys64/mingw64/include/c++/13.2.0/cstdlib \
  C:/Users/agome/Desktop/2P-RPG/2P-RPG/Character/Character.h \
  C:/Users/agome/Desktop/2P-RPG/2P-RPG/Combat/Action.h \
  C:/msys64/mingw64/include/c++/13.2.0/queue \
@@ -147,6 +118,35 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.2.0/bits/stl_deque.h \
  C:/msys64/mingw64/include/c++/13.2.0/bits/deque.tcc \
  C:/msys64/mingw64/include/c++/13.2.0/bits/stl_queue.h \
+ C:/msys64/mingw64/include/c++/13.2.0/string \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/stringfwd.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/char_traits.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/postypes.h \
+ C:/msys64/mingw64/include/c++/13.2.0/cwchar \
+ C:/msys64/mingw64/include/wchar.h \
+ C:/msys64/mingw64/include/corecrt_stdio_config.h \
+ C:/msys64/mingw64/include/_mingw_off_t.h \
+ C:/msys64/mingw64/include/_mingw_stat64.h \
+ C:/msys64/mingw64/include/swprintf.inl \
+ C:/msys64/mingw64/include/sec_api/wchar_s.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/localefwd.h \
+ C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+ C:/msys64/mingw64/include/c++/13.2.0/clocale \
+ C:/msys64/mingw64/include/locale.h C:/msys64/mingw64/include/stdio.h \
+ C:/msys64/mingw64/include/sec_api/stdio_s.h \
+ C:/msys64/mingw64/include/c++/13.2.0/iosfwd \
+ C:/msys64/mingw64/include/c++/13.2.0/cctype \
+ C:/msys64/mingw64/include/ctype.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/ostream_insert.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/cxxabi_forced.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/basic_string.h \
+ C:/msys64/mingw64/include/c++/13.2.0/string_view \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/string_view.tcc \
+ C:/msys64/mingw64/include/c++/13.2.0/ext/string_conversions.h \
+ C:/msys64/mingw64/include/c++/13.2.0/cstdio \
+ C:/msys64/mingw64/include/c++/13.2.0/cerrno \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/charconv.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/basic_string.tcc \
  C:/msys64/mingw64/include/c++/13.2.0/iostream \
  C:/msys64/mingw64/include/c++/13.2.0/ostream \
  C:/msys64/mingw64/include/c++/13.2.0/ios \
@@ -194,4 +194,7 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.2.0/bits/stl_relops.h \
  C:/msys64/mingw64/include/c++/13.2.0/algorithm \
  C:/msys64/mingw64/include/c++/13.2.0/pstl/glue_algorithm_defs.h \
- C:/msys64/mingw64/include/c++/13.2.0/pstl/execution_defs.h
+ C:/msys64/mingw64/include/c++/13.2.0/pstl/execution_defs.h \
+ C:/msys64/mingw64/include/c++/13.2.0/cstring \
+ C:/msys64/mingw64/include/string.h \
+ C:/msys64/mingw64/include/sec_api/string_s.h

@@ -27,7 +27,7 @@ public:
     void chooseEnemy();
     void doCombat();
     void addParticipant(Character *participant);
-    string toString();
+    char* toString();
 };
 
 
