@@ -111,8 +111,9 @@ CMakeFiles/rpg.dir/Player/Player.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.2.0/cstdlib \
  C:/Users/agome/Desktop/2P-RPG/2P-RPG/Character/Character.h \
  C:/Users/agome/Desktop/2P-RPG/2P-RPG/Combat/Action.h \
- C:/msys64/mingw64/include/c++/13.2.0/iostream \
- C:/msys64/mingw64/include/c++/13.2.0/ostream \
+ C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.h \
+ C:/msys64/mingw64/include/c++/13.2.0/fstream \
+ C:/msys64/mingw64/include/c++/13.2.0/istream \
  C:/msys64/mingw64/include/c++/13.2.0/ios \
  C:/msys64/mingw64/include/c++/13.2.0/iosfwd \
  C:/msys64/mingw64/include/c++/13.2.0/bits/stringfwd.h \
@@ -180,6 +181,11 @@ CMakeFiles/rpg.dir/Player/Player.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_inline.h \
  C:/msys64/mingw64/include/c++/13.2.0/bits/locale_facets.tcc \
  C:/msys64/mingw64/include/c++/13.2.0/bits/basic_ios.tcc \
+ C:/msys64/mingw64/include/c++/13.2.0/ostream \
  C:/msys64/mingw64/include/c++/13.2.0/bits/ostream.tcc \
- C:/msys64/mingw64/include/c++/13.2.0/istream \
- C:/msys64/mingw64/include/c++/13.2.0/bits/istream.tcc
+ C:/msys64/mingw64/include/c++/13.2.0/bits/istream.tcc \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/codecvt.h \
+ C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/fstream.tcc \
+ C:/msys64/mingw64/include/c++/13.2.0/iostream

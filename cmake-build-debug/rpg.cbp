@@ -104,6 +104,12 @@
 		<Unit filename="C:/Users/agome/Desktop/2P-RPG/2P-RPG/Enemy/Enemy.h">
 			<Option target="rpg"/>
 		</Unit>
+		<Unit filename="C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.cpp">
+			<Option target="rpg"/>
+		</Unit>
+		<Unit filename="C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.h">
+			<Option target="rpg"/>
+		</Unit>
 		<Unit filename="C:/Users/agome/Desktop/2P-RPG/2P-RPG/Player/Player.cpp">
 			<Option target="rpg"/>
 		</Unit>

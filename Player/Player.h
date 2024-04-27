@@ -23,12 +23,18 @@ private:
     void levelUp();
 public:
     Player(const char* _name, int _health, int _attack, int _defense, int _speed);
+    Player(const char* _name, int _health, int _maxHealth, int _attack, int _defense, int _speed, bool _isPlayer, int _level, int _experience);
+
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
     Character* selectTarget(vector<Enemy*> possibleTargets);
     Action takeAction(vector<Enemy*> enemies);
 
+    char* serialize();
+
     void resetDefense();
+
+    static Player* unserialize(char* buffer);
 
     void gainExperience(int exp);
     //TODO: Implement use object
@@ -36,6 +42,11 @@ public:
     void setSelectedEnemy(Enemy* enemy) {
         selectedEnemy = enemy;
     }
+
+    static const unsigned int BUFFER_SIZE = sizeof(name) + sizeof(health) + sizeof(attack) + sizeof(defense) + sizeof(speed) + sizeof(isPlayer) + sizeof(level) + sizeof(experience) + sizeof(originalDefense);
+
+private:
+    char buffer[Player::BUFFER_SIZE];
 };
 
 

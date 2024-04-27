@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/agome/Desktop/2P-RPG/2P-RPG/Combat/Action.cpp" "CMakeFiles/rpg.dir/Combat/Action.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Combat/Action.cpp.obj.d"
   "C:/Users/agome/Desktop/2P-RPG/2P-RPG/Combat/Combat.cpp" "CMakeFiles/rpg.dir/Combat/Combat.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Combat/Combat.cpp.obj.d"
   "C:/Users/agome/Desktop/2P-RPG/2P-RPG/Enemy/Enemy.cpp" "CMakeFiles/rpg.dir/Enemy/Enemy.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Enemy/Enemy.cpp.obj.d"
+  "C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.cpp" "CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj.d"
   "C:/Users/agome/Desktop/2P-RPG/2P-RPG/Player/Player.cpp" "CMakeFiles/rpg.dir/Player/Player.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Player/Player.cpp.obj.d"
   "C:/Users/agome/Desktop/2P-RPG/2P-RPG/main.cpp" "CMakeFiles/rpg.dir/main.cpp.obj" "gcc" "CMakeFiles/rpg.dir/main.cpp.obj.d"
   )
