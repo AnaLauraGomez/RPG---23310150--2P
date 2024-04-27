@@ -1,7 +1,3 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
-
 #ifndef RPG_ENEMY_H
 #define RPG_ENEMY_H
 

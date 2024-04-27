@@ -1,7 +1,3 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
-
 #include "Enemy.h"
 #include "../Utils.h"
 #include <iostream>
@@ -50,6 +46,19 @@ Action Enemy::takeAction(vector<Player*> partyMembers) {
     Action currentAction;
     currentAction.speed = getSpeed();
 
+    double fifteenPercentMaxHealth = 0.15 * getMaxHealth();
+    if (getHealth() < fifteenPercentMaxHealth) {
+        double defenseProbability = static_cast<double>(rand()) / RAND_MAX;
+        cout << "Tu probabilidad de defenderte fue: " << defenseProbability << endl;
+        if (defenseProbability <= 0.4) {
+            defend();
+            cout << getName() << " decide defenderse al tener menos del 15% de vida." << endl;
+            return currentAction; // Retorna una acción vacía si decide defenderse
+        }
+    }
+
+
+    // Selección del objetivo si no decide defenderse
     Character* target = selectTarget(partyMembers);
     currentAction.target = target;
     currentAction.action = [this, target](){

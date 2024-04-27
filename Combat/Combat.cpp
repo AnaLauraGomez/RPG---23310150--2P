@@ -180,27 +180,12 @@ void Combat::registerActions(vector<Character*>::iterator participantIterator) {
             }
             actionQueue.push(playerAction);
         } else {
-            // Lógica para que el enemigo pueda defenderse con probabilidad del 40% si tiene menos del 15% de vida
-            Enemy *enemyParticipant = dynamic_cast<Enemy*>(*participantIterator);
-            double fifteenPercentMaxHealth = 0.15 * enemyParticipant->getMaxHealth();
-            if (enemyParticipant->getHealth() < fifteenPercentMaxHealth) {
-                // Calcular la probabilidad de defensa
-                double defenseProbability = static_cast<double>(rand()) / RAND_MAX;
-                // Calcular el límite
-                int limite = static_cast<int>(defenseProbability * RAND_MAX);
-                cout << "Tu probabilidad de defenderte fue: " << defenseProbability << endl;
-                if (defenseProbability <= 0.4) {
-                    enemyParticipant->defend();
-                    cout << enemyParticipant->getName() << " decide defenderse al tener menos del 15% de vida." << endl;
-                    participantIterator++;
-                    continue; // Saltar al siguiente participante sin registrar acción de ataque
-                }
-            }
-
-            Action enemyAction = enemyParticipant->takeAction(partyMembers);
+            // El enemigo elige su acción
+            Action enemyAction = ((Enemy*)*participantIterator)->takeAction(partyMembers);
             actionQueue.push(enemyAction);
+            participantIterator++;
+            continue;
         }
-
         participantIterator++;
     }
 }
