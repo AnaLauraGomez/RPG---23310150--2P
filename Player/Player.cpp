@@ -1,7 +1,3 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
-
 #include "Player.h"
 #include "../Files/FileHandler.h"
 #include <iostream>
@@ -35,19 +31,45 @@ void Player::takeDamage(int damage) {
 
     if(health <= 0) {
         cout << name << " has been defeated!" << endl;
+        return;
     }
+
+    // Si el enemigo ha sido derrotado
+   /* if (damage >= health) {
+        gainExperience(currentEnemy->getExperience());
+    }*/
 
 }
 
 void Player::levelUp() {
     level++;
+    int requiredExperience = 10;
+
+    // Restar la experiencia necesaria para subir de nivel
+    experience -= requiredExperience;
+
+    health += 2;
+    attack += 2;
+    defense += 2;
+    speed += 2;
+    cout << name << " ha subido al nivel " << level << "!" << endl;
+    cout << "Nuevas estadísticas: Salud: " << health << ", Ataque: " << attack << ", Defensa: " << defense << ", Velocidad: " << speed << endl;
+    cout << "Nivel de experiencia actual: " << experience << endl;
+
+    // Verificar si hay remanente de experiencia después de subir de nivel
+    if (experience >= requiredExperience) {
+        cout << "Tienes experiencia para subir de nivel" << endl;
+        levelUp(); // Llamar recursivamente para subir de nivel de nuevo si hay suficiente experiencia
+    }
 }
 
 void Player::gainExperience(int exp) {
     experience += exp;
-    if (experience >= 100) {
-        levelUp();
-        experience = 100-experience;
+
+    int requiredExperience = 10;
+
+    if (experience >= requiredExperience) {
+        levelUp(); // Subir de nivel si se cumple la condición
     }
 }
 

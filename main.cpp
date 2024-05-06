@@ -6,8 +6,8 @@
 #include <fstream>
 
 int main() {
-    Player *player = new Player("Victor", 40, 10, 5, 3);
-    /*FileHandler *fileHandler = new FileHandler();
+   Player *player = new Player("Victor", 40, 10, 5, 3);
+    /* FileHandler *fileHandler = new FileHandler();
 
     char* buffer = player->serialize();
 
@@ -22,9 +22,9 @@ int main() {
 
 
 
-    Enemy *enemy = new Enemy("Goblin", 60, 7, 3, 5, 10);
+   Enemy *enemy = new Enemy("Goblin", 60, 7, 3, 5, 20);
     Enemy *enemy2 = new Enemy("Orc", 40, 7, 2, 4, 10);
-    Enemy *enemy3 = new Enemy("Cloe", 40, 7, 2, 4, 10);
+    Enemy *enemy3 = new Enemy("Cloe", 40, 7, 2, 4, 5);
 
     vector<Character*> participants;
 

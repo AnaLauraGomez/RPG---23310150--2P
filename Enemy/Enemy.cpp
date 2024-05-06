@@ -25,7 +25,8 @@ void Enemy::takeDamage(int damage) {
     }
 }
 
-int Enemy::getExperience() {
+int Enemy::getExperience() const {
+    cout << "Experiencia ganada de este combate: " << experience << endl;
     return experience;
 }
 
@@ -51,6 +52,9 @@ Action Enemy::takeAction(vector<Player*> partyMembers) {
         double defenseProbability = static_cast<double>(rand()) / RAND_MAX;
         cout << "Tu probabilidad de defenderte fue: " << defenseProbability << endl;
         if (defenseProbability <= 0.4) {
+            currentAction.action = [](){
+                //Actualmente la defensa no esta pensada para ser una accion ejecutada por la maquina de estados
+            };
             defend();
             cout << getName() << " decide defenderse al tener menos del 15% de vida." << endl;
             return currentAction; // Retorna una acción vacía si decide defenderse

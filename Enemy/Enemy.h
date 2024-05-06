@@ -19,7 +19,7 @@ public:
     Character* selectTarget(vector<Player*> possibleTargets);
     Action takeAction(vector<Player*> partyMembers);
 
-    int getExperience();
+    int getExperience() const;
 };
 
 

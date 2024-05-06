@@ -1,6 +1,3 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
 #pragma once
 #ifndef RPG_PLAYER_H
 #define RPG_PLAYER_H
@@ -26,7 +23,7 @@ public:
     Player(const char* _name, int _health, int _maxHealth, int _attack, int _defense, int _speed, bool _isPlayer, int _level, int _experience);
 
     void doAttack(Character *target) override;
-    void takeDamage(int damage) override;
+    void takeDamage(int damage);
     Character* selectTarget(vector<Enemy*> possibleTargets);
     Action takeAction(vector<Enemy*> enemies);
 
@@ -44,6 +41,7 @@ public:
     }
 
     static const unsigned int BUFFER_SIZE = sizeof(name) + sizeof(health) + sizeof(attack) + sizeof(defense) + sizeof(speed) + sizeof(isPlayer) + sizeof(level) + sizeof(experience) + sizeof(originalDefense);
+
 
 private:
     char buffer[Player::BUFFER_SIZE];

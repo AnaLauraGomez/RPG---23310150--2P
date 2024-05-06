@@ -1,6 +1,3 @@
-//
-// Created by Victor Navarro on 15/02/24.
-//
 
 #include "Character.h"
 #include <cstring>

@@ -134,7 +134,43 @@ void Combat::doCombat() {
 
         // Si se ha derrotado al enemigo seleccionado, salir del bucle de combate
         if (selectedEnemy && selectedEnemy->getHealth() <= 0) {
-            break;
+            Player* player = nullptr;
+            // Encontrar al jugador en la lista de participantes
+            for (auto participant : participants) {
+                if (participant->getIsPlayer()) {
+                    player = dynamic_cast<Player*>(participant);
+                    break;
+                }
+        }
+
+            if (player) {
+                // Ganar experiencia por derrotar al enemigo
+                player->gainExperience(selectedEnemy->getExperience());
+            }
+
+            // Eliminar al enemigo derrotado de la lista de enemigos
+            //enemies.erase(remove(enemies.begin(), enemies.end(), selectedEnemy), enemies.end());
+            // Preguntar al jugador si desea continuar peleando o salir solo si aun hay enemigos
+            if(enemies.empty()) {
+                break;
+            }
+            char choice;
+            cout << "¿Deseas continuar peleando? (y/n): ";
+            cin >> choice;
+
+            if (choice != 'y' && choice != 'Y') {
+                // El jugador decide salir del combate
+                break;
+            } else {
+                // Mostrar la lista actualizada de enemigos restantes
+                cout << "=== Enemigos restantes: ===" << endl;
+                for (auto enemy : enemies) {
+                    cout << enemy->getName() << " (Health: " << enemy->getHealth() << ")" << endl;
+                }
+                cout << "" << endl;
+                // Permitir al jugador seleccionar un nuevo enemigo
+                chooseEnemy();
+            }
         }
     }
 
@@ -158,7 +194,7 @@ void Combat::executeActions(vector<Character*>::iterator participant) {
 }
 
 void Combat::checkParticipantStatus(Character *participant) {
-    if(participant->getHealth() <= 0) {
+    if(participant != nullptr && participant->getHealth() <= 0) {
         if(participant->getIsPlayer()) {
             partyMembers.erase(remove(partyMembers.begin(), partyMembers.end(), participant), partyMembers.end());
         } else {
