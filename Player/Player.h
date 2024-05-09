@@ -16,7 +16,7 @@ private:
     int experience;
     int originalDefense;
     Enemy* selectedEnemy;
-
+    void saveProgress();
     void levelUp(vector<Enemy*> enemies);
 public:
     Player(const char* _name, int _health, int _attack, int _defense, int _speed);

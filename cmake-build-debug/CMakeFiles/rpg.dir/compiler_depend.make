@@ -185,6 +185,7 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: C:/Users/agome/Desktop/2P-RPG/2P-RPG/C
   C:/Users/agome/Desktop/2P-RPG/2P-RPG/Character/Character.h \
   C:/Users/agome/Desktop/2P-RPG/2P-RPG/Combat/Action.h \
   C:/Users/agome/Desktop/2P-RPG/2P-RPG/Enemy/Enemy.h \
+  C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.h \
   C:/Users/agome/Desktop/2P-RPG/2P-RPG/Player/Player.h \
   C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/_mingw_mac.h \
@@ -205,6 +206,7 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: C:/Users/agome/Desktop/2P-RPG/2P-RPG/C
   C:/msys64/mingw64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/mingw64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/mingw64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/cpp_type_traits.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/cxxabi_forced.h \
@@ -215,6 +217,7 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: C:/Users/agome/Desktop/2P-RPG/2P-RPG/C
   C:/msys64/mingw64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/mingw64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/mingw64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/mingw64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -292,6 +295,7 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: C:/Users/agome/Desktop/2P-RPG/2P-RPG/C
   C:/msys64/mingw64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/mingw64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/mingw64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/mingw64/include/c++/13.2.0/fstream \
   C:/msys64/mingw64/include/c++/13.2.0/functional \
   C:/msys64/mingw64/include/c++/13.2.0/initializer_list \
   C:/msys64/mingw64/include/c++/13.2.0/ios \
@@ -330,8 +334,10 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: C:/Users/agome/Desktop/2P-RPG/2P-RPG/C
   C:/msys64/mingw64/include/c++/13.2.0/utility \
   C:/msys64/mingw64/include/c++/13.2.0/vector \
   C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -1388,6 +1394,8 @@ C:/msys64/mingw64/include/stddef.h:
 
 C:/Users/agome/Desktop/2P-RPG/2P-RPG/Combat/Action.h:
 
+C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.h:
+
 C:/Users/agome/Desktop/2P-RPG/2P-RPG/Player/Player.h:
 
 C:/msys64/mingw64/include/_mingw_stat64.h:
@@ -1404,6 +1412,8 @@ C:/msys64/mingw64/include/locale.h:
 
 C:/msys64/mingw64/include/c++/13.2.0/bits/charconv.h:
 
+C:/msys64/mingw64/include/c++/13.2.0/bits/codecvt.h:
+
 C:/msys64/mingw64/include/c++/13.2.0/bits/streambuf.tcc:
 
 C:/msys64/mingw64/include/c++/13.2.0/bits/cxxabi_forced.h:
@@ -1413,6 +1423,8 @@ C:/msys64/mingw64/include/c++/13.2.0/bits/cxxabi_init_exception.h:
 C:/msys64/mingw64/include/c++/13.2.0/bits/deque.tcc:
 
 C:/msys64/mingw64/include/c++/13.2.0/bits/exception_ptr.h:
+
+C:/msys64/mingw64/include/c++/13.2.0/bits/fstream.tcc:
 
 C:/msys64/mingw64/include/c++/13.2.0/bits/ios_base.h:
 
@@ -1458,6 +1470,8 @@ C:/msys64/mingw64/include/c++/13.2.0/deque:
 
 C:/msys64/mingw64/include/c++/13.2.0/ext/atomicity.h:
 
+C:/msys64/mingw64/include/c++/13.2.0/fstream:
+
 C:/msys64/mingw64/include/c++/13.2.0/ios:
 
 C:/msys64/mingw64/include/c++/13.2.0/iosfwd:
@@ -1485,6 +1499,10 @@ C:/msys64/mingw64/include/c++/13.2.0/streambuf:
 C:/msys64/mingw64/include/c++/13.2.0/utility:
 
 C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h:
+
+C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h:
+
+C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h:
 
 C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h:
 
@@ -1515,18 +1533,6 @@ C:/msys64/mingw64/include/time.h:
 C:/msys64/mingw64/include/wchar.h:
 
 C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.cpp:
-
-C:/msys64/mingw64/include/c++/13.2.0/bits/codecvt.h:
-
-C:/msys64/mingw64/include/c++/13.2.0/bits/fstream.tcc:
-
-C:/msys64/mingw64/include/c++/13.2.0/fstream:
-
-C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h:
-
-C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h:
-
-C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.h:
 
 C:/Users/agome/Desktop/2P-RPG/2P-RPG/Player/Player.cpp:
 

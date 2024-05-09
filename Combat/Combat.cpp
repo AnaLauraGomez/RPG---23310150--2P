@@ -5,8 +5,10 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cstring>
+#include "../Files/FileHandler.h"
 
 using namespace std;
+
 
 bool compareSpeed(Character *a, Character *b) {
     return a->getSpeed() > b->getSpeed();

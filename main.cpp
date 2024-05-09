@@ -5,9 +5,26 @@
 #include "Files/FileHandler.h"
 #include <fstream>
 
+Player* loadPlayerInfo() {
+    try {
+        char buffer[Player::BUFFER_SIZE];
+        FileHandler fileHandler = FileHandler();
+        fileHandler.readFromFile("Personaje1.data", buffer, Player::BUFFER_SIZE);
+        return Player::unserialize(buffer);
+    } catch(int error) {
+        //Preguntar al usuario el nombre de jugador
+        //return new Player("Otro Jugador", 10, 5, 4, 3);
+        return new Player("Victor", 40, 10, 5, 3);
+    }
+}
+
 int main() {
-   Player *player = new Player("Victor", 40, 10, 5, 3);
-    FileHandler *fileHandler = new FileHandler();
+
+    Player *player = loadPlayerInfo();
+    cout << player->toString() << endl;
+
+    //Player *player = new Player("Victor", 40, 10, 5, 3);
+    /*FileHandler *fileHandler = new FileHandler();
 
     char* buffer = player->serialize();
 
@@ -16,13 +33,13 @@ int main() {
     fileHandler->readFromFile("Personaje1.data",bufferLectura, Player::BUFFER_SIZE);
 
     Player *unserializedPlayer = Player::unserialize(bufferLectura);
+    cout << "--- Serializacion ---" << endl;
     cout << unserializedPlayer->toString();
+    cout << "---------------------" << endl;*/
 
 
 
-
-
-  /* Enemy *enemy = new Enemy("Goblin", 60, 7, 3, 5, 20);
+    Enemy *enemy = new Enemy("Goblin", 60, 7, 3, 5, 20);
     Enemy *enemy2 = new Enemy("Orc", 40, 7, 2, 4, 10);
     Enemy *enemy3 = new Enemy("Cloe", 40, 7, 2, 4, 5);
 
@@ -38,7 +55,7 @@ int main() {
 
     delete player;
     delete enemy;
-    delete combat;*/
+    delete combat;
 
     return 0;
 }

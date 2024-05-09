@@ -4,6 +4,14 @@
 
 using namespace std;
 
+void Player::saveProgress() {
+    char* buffer = this->serialize();
+    FileHandler fileHandler = FileHandler();
+    fileHandler.writeToFile("Personaje1.data", buffer, Player::BUFFER_SIZE);
+    cout << "Guardaste tu progreso" << endl;
+}
+
+
 Player::Player(const char* _name, int _health, int _attack, int _defense, int _speed) : Character(_name, _health, _health,_attack, _defense, _speed, true) {
     level = 1;
     experience = 0;
@@ -63,6 +71,16 @@ void Player::levelUp(vector<Enemy*> enemies) {
         cout << "Tienes experiencia para subir de nivel" << endl;
         //levelUpEnemies(enemies);
         levelUp(enemies); // Llamar recursivamente para subir de nivel de nuevo si hay suficiente experiencia
+    }
+
+    char choice;
+    cout << "¿Deseas guardar tu progreso? (y/n): ";
+    cin >> choice;
+
+    if (choice != 'y' && choice != 'Y') {
+        cout << "No guardas progreso" << endl;
+    } else {
+        saveProgress();
     }
 }
 

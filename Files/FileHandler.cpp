@@ -14,9 +14,14 @@ void FileHandler::writeToFile(char *targetFilePath, char* buffer, unsigned int b
 
 char* FileHandler::readFromFile(char *targetFilePath,char* buffer,unsigned int bufferSize) {
     readStream.open(targetFilePath, ios::binary);
-    readStream.read(buffer,bufferSize);
-    readStream.close();
-    return buffer;
+    //Si existe el archivo ejecuta el contenido dentro del if
+    if(readStream) {
+        readStream.read(buffer, bufferSize);
+        readStream.close();
+        return buffer;
+    }
+    //Si no, envia una excepcion
+    throw 1;
 
 
 }

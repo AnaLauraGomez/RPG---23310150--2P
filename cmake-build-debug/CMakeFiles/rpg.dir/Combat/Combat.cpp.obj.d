@@ -197,4 +197,10 @@ CMakeFiles/rpg.dir/Combat/Combat.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.2.0/pstl/execution_defs.h \
  C:/msys64/mingw64/include/c++/13.2.0/cstring \
  C:/msys64/mingw64/include/string.h \
- C:/msys64/mingw64/include/sec_api/string_s.h
+ C:/msys64/mingw64/include/sec_api/string_s.h \
+ C:/Users/agome/Desktop/2P-RPG/2P-RPG/Files/FileHandler.h \
+ C:/msys64/mingw64/include/c++/13.2.0/fstream \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/codecvt.h \
+ C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
+ C:/msys64/mingw64/include/c++/13.2.0/bits/fstream.tcc
