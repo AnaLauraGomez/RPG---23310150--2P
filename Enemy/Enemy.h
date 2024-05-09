@@ -20,6 +20,7 @@ public:
     Action takeAction(vector<Player*> partyMembers);
 
     int getExperience() const;
+    void increaseStats(int points); // Método para aumentar las estadísticas del enemigo
 };
 
 

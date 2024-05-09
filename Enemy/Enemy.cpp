@@ -25,6 +25,21 @@ void Enemy::takeDamage(int damage) {
     }
 }
 
+void Enemy::increaseStats(int points) {
+    cout << "Los enemigos subieron nivel de estadisticas" << endl;
+    // Distribuir los puntos entre las estadísticas del enemigo
+    int healthPoints = points;
+    int attackPoints = points;
+    int defensePoints = points;
+    int speedPoints = points;
+
+    // Aumentar las estadísticas del enemigo
+    health += healthPoints;
+    attack += attackPoints;
+    defense += defensePoints;
+    speed += speedPoints;
+}
+
 int Enemy::getExperience() const {
     cout << "Experiencia ganada de este combate: " << experience << endl;
     return experience;

@@ -41,7 +41,7 @@ void Player::takeDamage(int damage) {
 
 }
 
-void Player::levelUp() {
+void Player::levelUp(vector<Enemy*> enemies) {
     level++;
     int requiredExperience = 10;
 
@@ -56,20 +56,32 @@ void Player::levelUp() {
     cout << "Nuevas estadísticas: Salud: " << health << ", Ataque: " << attack << ", Defensa: " << defense << ", Velocidad: " << speed << endl;
     cout << "Nivel de experiencia actual: " << experience << endl;
 
+    levelUpEnemies(enemies);
+
     // Verificar si hay remanente de experiencia después de subir de nivel
     if (experience >= requiredExperience) {
         cout << "Tienes experiencia para subir de nivel" << endl;
-        levelUp(); // Llamar recursivamente para subir de nivel de nuevo si hay suficiente experiencia
+        //levelUpEnemies(enemies);
+        levelUp(enemies); // Llamar recursivamente para subir de nivel de nuevo si hay suficiente experiencia
     }
 }
 
-void Player::gainExperience(int exp) {
+void Player::gainExperience(int exp, vector<Enemy*> enemies) {
     experience += exp;
 
     int requiredExperience = 10;
 
     if (experience >= requiredExperience) {
-        levelUp(); // Subir de nivel si se cumple la condición
+        levelUp(enemies); // Subir de nivel si se cumple la condición
+    }
+}
+
+void Player::levelUpEnemies(const std::vector<Enemy*>& enemies) {
+    int levelUpPoints = 2; // Puntos de aumento en las estadísticas al subir de nivel
+
+    // Aumentar las estadísticas de cada enemigo en la lista
+    for (auto enemy : enemies) {
+        enemy->increaseStats(levelUpPoints);
     }
 }
 
@@ -182,8 +194,8 @@ char* Player::serialize(){
 Player* Player::unserialize(char* buffer) {
     char *iterator = buffer;
 
-    char name;
-    int health, maxHealth, attack, defense, speed, level, experience, originalDefense;
+    char name[30];
+    int health, maxHealth, attack, defense, speed, level, experience;
     bool isPlayer;
 
     memcpy(&name, iterator, sizeof(name));
@@ -214,7 +226,7 @@ Player* Player::unserialize(char* buffer) {
     iterator += sizeof(experience);
 
 
-    return new Player(&name, health, maxHealth, attack, defense, speed, isPlayer, level, experience);
+    return new Player(name, health, maxHealth, attack, defense, speed, isPlayer, level, experience);
 
 }
 

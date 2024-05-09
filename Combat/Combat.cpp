@@ -116,6 +116,8 @@ void Combat::doCombat() {
 
     combatPrep();
     int round = 1;
+    bool playerLeveledUp = false;
+
     //Este while representa las rondas del combate
     while(enemies.size() > 0 && partyMembers.size() > 0) {
         cout<<"Round " << round << endl;
@@ -145,11 +147,11 @@ void Combat::doCombat() {
 
             if (player) {
                 // Ganar experiencia por derrotar al enemigo
-                player->gainExperience(selectedEnemy->getExperience());
+                player->gainExperience(selectedEnemy->getExperience(), enemies);
+                //player->levelUpEnemies(enemies);
+
             }
 
-            // Eliminar al enemigo derrotado de la lista de enemigos
-            //enemies.erase(remove(enemies.begin(), enemies.end(), selectedEnemy), enemies.end());
             // Preguntar al jugador si desea continuar peleando o salir solo si aun hay enemigos
             if(enemies.empty()) {
                 break;
@@ -176,8 +178,10 @@ void Combat::doCombat() {
 
     if (selectedEnemy && selectedEnemy->getHealth() <= 0) {
         cout << "You win!" << endl;
+        cout << "GAME OVER" << endl;
     } else {
         cout << "You lose!" << endl;
+        cout << "GAME OVER" << endl;
     }
 }
 
