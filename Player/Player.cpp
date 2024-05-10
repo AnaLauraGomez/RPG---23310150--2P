@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "../Files/FileHandler.h"
 #include <iostream>
+#include <random>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ void Player::saveProgress() {
     char* buffer = this->serialize();
     FileHandler fileHandler = FileHandler();
     fileHandler.writeToFile("Personaje1.data", buffer, Player::BUFFER_SIZE);
-    cout << "Guardaste tu progreso" << endl;
+    cout << " --- ¡Guardaste tu progreso! ---" << endl;
 }
 
 
@@ -56,13 +57,13 @@ void Player::levelUp(vector<Enemy*> enemies) {
     // Restar la experiencia necesaria para subir de nivel
     experience -= requiredExperience;
 
-    health += 2;
+    health += 10;
     attack += 2;
     defense += 2;
     speed += 2;
-    cout << name << " ha subido al nivel " << level << "!" << endl;
-    cout << "Nuevas estadísticas: Salud: " << health << ", Ataque: " << attack << ", Defensa: " << defense << ", Velocidad: " << speed << endl;
-    cout << "Nivel de experiencia actual: " << experience << endl;
+    cout <<" --- " << name << " ha subido al nivel " << level << " --- " << endl;
+    cout << "[ Nuevas estadisticas ] Salud: " << health << ", Ataque: " << attack << ", Defensa: " << defense << ", Velocidad: " << speed << endl;
+    cout << " -- Nivel de experiencia actual: " << experience << " -- " << endl;
 
     levelUpEnemies(enemies);
 
@@ -78,7 +79,7 @@ void Player::levelUp(vector<Enemy*> enemies) {
     cin >> choice;
 
     if (choice != 'y' && choice != 'Y') {
-        cout << "No guardas progreso" << endl;
+        cout << " -- No guardas progreso -- " << endl;
     } else {
         saveProgress();
     }
@@ -95,7 +96,21 @@ void Player::gainExperience(int exp, vector<Enemy*> enemies) {
 }
 
 void Player::levelUpEnemies(const std::vector<Enemy*>& enemies) {
-    int levelUpPoints = 2; // Puntos de aumento en las estadísticas al subir de nivel
+    cout << " -- Los enemigos subieron nivel de estadisticas --" << endl;
+    int levelUpPoints = 1; // Puntos de aumento en las estadísticas al subir de nivel
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> dist(1, 3);
+
+    int num_iteraciones = 2; // Número de veces que se repetirá el bucle
+
+    for (int i = 0; i < num_iteraciones; ++i) {
+        int points = dist(gen); // Generar un número aleatorio usando el generador
+       //cout << "El valor de point es: " << points << endl;
+        levelUpPoints = levelUpPoints + points;
+    }
+
+    cout << "Nivel de subida de las estadisticas del enemigo: " << levelUpPoints << endl;
 
     // Aumentar las estadísticas de cada enemigo en la lista
     for (auto enemy : enemies) {

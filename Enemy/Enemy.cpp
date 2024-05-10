@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "../Utils.h"
 #include <iostream>
+#include <random>
 
 
 using namespace std;
@@ -26,8 +27,7 @@ void Enemy::takeDamage(int damage) {
 }
 
 void Enemy::increaseStats(int points) {
-    cout << "Los enemigos subieron nivel de estadisticas" << endl;
-    // Distribuir los puntos entre las estadísticas del enemigo
+
     int healthPoints = points;
     int attackPoints = points;
     int defensePoints = points;

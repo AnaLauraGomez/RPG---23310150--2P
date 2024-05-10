@@ -84,7 +84,7 @@ Character* Combat::getTarget(Character* attacker) {
 }
 
 void Combat::chooseEnemy() {
-    cout << "Elige con qué enemigo deseas pelear:" << endl;
+    cout << " --- Elige con que enemigo deseas pelear --- " << endl;
     for (int i = 0; i < enemies.size(); ++i) {
         cout << i+1 << ". " << enemies[i]->getName() << endl;
     }
@@ -106,7 +106,7 @@ void Combat::chooseEnemy() {
 }
 
 void Combat::doCombat() {
-    cout << "Inicio del combate" << endl;
+    cout << " === Inicio del combate === " << endl;
     chooseEnemy();
 
     // Mostrar los parámetros de vida, defensa y ataque de todos los participantes al inicio del combate

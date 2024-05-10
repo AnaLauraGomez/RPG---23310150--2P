@@ -10,10 +10,12 @@ Player* loadPlayerInfo() {
         char buffer[Player::BUFFER_SIZE];
         FileHandler fileHandler = FileHandler();
         fileHandler.readFromFile("Personaje1.data", buffer, Player::BUFFER_SIZE);
+        cout << "--- Tus estadisticas guardadas son: ---" << endl;
         return Player::unserialize(buffer);
     } catch(int error) {
         //Preguntar al usuario el nombre de jugador
         //return new Player("Otro Jugador", 10, 5, 4, 3);
+        cout << "--- No hay datos guardados, empiezas con estadisticas default ---" << endl;
         return new Player("Victor", 40, 10, 5, 3);
     }
 }
