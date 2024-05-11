@@ -67,13 +67,6 @@ void Player::levelUp(vector<Enemy*> enemies) {
 
     levelUpEnemies(enemies);
 
-    // Verificar si hay remanente de experiencia después de subir de nivel
-    if (experience >= requiredExperience) {
-        cout << "Tienes experiencia para subir de nivel" << endl;
-        //levelUpEnemies(enemies);
-        levelUp(enemies); // Llamar recursivamente para subir de nivel de nuevo si hay suficiente experiencia
-    }
-
     char choice;
     cout << "¿Deseas guardar tu progreso? (y/n): ";
     cin >> choice;
@@ -82,6 +75,13 @@ void Player::levelUp(vector<Enemy*> enemies) {
         cout << " -- No guardas progreso -- " << endl;
     } else {
         saveProgress();
+    }
+
+    // Verificar si hay remanente de experiencia después de subir de nivel
+    if (experience >= requiredExperience) {
+        cout << "Tienes experiencia para subir de nivel" << endl;
+        //levelUpEnemies(enemies);
+        levelUp(enemies); // Llamar recursivamente para subir de nivel de nuevo si hay suficiente experiencia
     }
 }
 
